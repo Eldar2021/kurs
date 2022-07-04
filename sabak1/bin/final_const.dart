@@ -10,4 +10,10 @@ void main(List<String> args) {
   print(b);
   final bool kata = false;
   print(kata);
+
+  // Var Type / Var Name / = / Var value
+  String s = 'Adilbek';
+  int s1 = 12;
+  double s2 = 12.3;
+  bool s3 = true;
 }
