@@ -1,9 +1,16 @@
 void main(List<String> args) {
+  print('\u2666');
+  print('\u2665');
+  print('\u2600');
+  const emojiMan = '👨';
+  print(emojiMan.runes);
+
+  print('\$');
   // Озгормо сан менен башталбайт
   int kurs8 = 12;
   // Озгорулмо ачкыч соз менен башталбайт
   /// bool if = true;
-  
+
   var s;
   print(s);
 }

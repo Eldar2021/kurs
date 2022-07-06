@@ -1,0 +1,5 @@
+/*
+Bir List tuzup anyn ozgacholuktorun koldonuu
+
+Bir Set tuzup anyn ozgacholuktorun koldonuu
+*/
