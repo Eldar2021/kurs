@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sabak10_f7/home_page.dart';
 
+/// tapshyrma Login UI kozdoo 
+
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
 
