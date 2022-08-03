@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 // ; => dart ta bir suylomdun butkonu
+
 // suylom: bir toluk oy;
 
 class CounterPage extends StatefulWidget {
