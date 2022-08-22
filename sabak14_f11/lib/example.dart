@@ -5,6 +5,7 @@ import 'model.dart';
 final students = <Student>[mayrambek, meerim, adilbek, altynbek, arsen, bakyt, talant];
 
 void main(List<String> arguments) {
+  
   controlEmailPhone('+996999771661', 'arsen@gmail.com');
 }
 

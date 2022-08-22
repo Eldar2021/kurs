@@ -2,6 +2,9 @@
 /// ?: sen (ozgormo) null bolo alasyng // nullable
 
 class Student {
+
+
+  
   final int id;
   final String name;
   final String lastName;
