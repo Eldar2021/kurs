@@ -18,6 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  
   Future<Weather?> fetchData() async {
     final dio = Dio();
     final res = await dio.get(ApiConst.address);
