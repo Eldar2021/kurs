@@ -55,10 +55,7 @@ class ErrorWidget extends StatelessWidget {
 }
 
 class WeatherSuccessWidget extends StatelessWidget {
-  const WeatherSuccessWidget(
-    this.weatherResponse, {
-    Key? key,
-  }) : super(key: key);
+  const WeatherSuccessWidget(this.weatherResponse, {super.key});
 
   final WeatherResponse weatherResponse;
 
