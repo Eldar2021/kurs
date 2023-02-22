@@ -1,60 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_example/service/auth_service.dart';
+import 'package:flutter_secure_example/home/pref_view.dart';
+import 'package:flutter_secure_example/home/secure_view.dart';
+import 'package:flutter_secure_example/storage/preferences_storage.dart';
+import 'package:flutter_secure_example/storage/secure_storage.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  const HomeView({
+    super.key,
+    required this.secureStorage,
+    required this.preferencesStorage,
+  });
+
+  final SecureStorage secureStorage;
+  final PreferencesStorage preferencesStorage;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeView'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ElevatedButton(
-              onPressed: () async {
-                await secureStorage.containsKey(authKey);
-              },
-              child: const Text('Contains AuthKey'),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                await secureStorage.delete(authKey);
-              },
-              child: const Text('Delete AuthKey'),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                await secureStorage.deleteAll();
-              },
-              child: const Text('Delete All'),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                await secureStorage.read(authKey);
-              },
-              child: const Text('Read AuthKey'),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                await secureStorage.readAll();
-              },
-              child: const Text('Read All'),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                await secureStorage.write(_someKey, 'Eldi');
-              },
-              child: const Text('Write Eldi to SomeKey'),
-            ),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('TabBar Widget'),
+          bottom: const TabBar(
+            tabs: <Widget>[Tab(text: 'SecureStorage'), Tab(text: 'PreferencesStorage')],
+          ),
+        ),
+        body: TabBarView(
+          children: <Widget>[
+            SecureStorageWidget(storage: secureStorage),
+            PreferencesStorageWidget(storage: preferencesStorage),
           ],
         ),
       ),
     );
   }
 }
-
-const _someKey = 'some-key';
