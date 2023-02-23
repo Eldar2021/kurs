@@ -18,14 +18,14 @@ class SecureStorageWidget extends StatelessWidget {
         children: [
           ElevatedButton(
             onPressed: () async {
-              final value = await storage.readAsync(key: _key);
+              final value = await storage.read(key: _key);
               Log.d('read:\n\tkey; $_key\n\tvalue: $value');
             },
             child: const Text('Read'),
           ),
           ElevatedButton(
             onPressed: () async {
-              await storage.write(key: _key, value: 'Eldi');
+              await storage.writeString(key: _key, value: 'Eldi');
             },
             child: const Text('Write'),
           ),

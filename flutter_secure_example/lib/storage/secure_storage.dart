@@ -4,7 +4,7 @@ import 'interface/exception.dart';
 import 'interface/storage.dart';
 
 /// A Secure Storage client which implements the base [EwStorage] interface.
-/// [SecureStorage] uses `FlutterSecureStorage` internally.
+/// By default, [SecureStorage] uses `FlutterSecureStorage`.
 ///
 /// ```dart
 /// // Create a `SecureStorage` instance.
@@ -26,20 +26,20 @@ class SecureStorage implements EwStorage {
   final FlutterSecureStorage _secureStorage;
 
   @override
-  Future<String?> readAsync({required String key}) async {
+  Future<String?> read({required String key}) async {
     try {
       return await _secureStorage.read(key: key);
-    } on Exception catch (error, stackTrace) {
-      Error.throwWithStackTrace(StorageException(error), stackTrace);
+    } catch (error, stackTrace) {
+      throw StorageException(error, stackTrace);
     }
   }
 
   @override
-  Future<void> write({required String key, required String value}) async {
+  Future<void> writeString({required String key, required String value}) async {
     try {
       await _secureStorage.write(key: key, value: value);
-    } on Exception catch (error, stackTrace) {
-      Error.throwWithStackTrace(StorageException(error), stackTrace);
+    } catch (error, stackTrace) {
+      throw StorageException(error, stackTrace);
     }
   }
 
@@ -47,8 +47,8 @@ class SecureStorage implements EwStorage {
   Future<void> delete({required String key}) async {
     try {
       await _secureStorage.delete(key: key);
-    } on Exception catch (error, stackTrace) {
-      Error.throwWithStackTrace(StorageException(error), stackTrace);
+    } catch (error, stackTrace) {
+      throw StorageException(error, stackTrace);
     }
   }
 
@@ -56,12 +56,8 @@ class SecureStorage implements EwStorage {
   Future<void> clear() async {
     try {
       await _secureStorage.deleteAll();
-    } on Exception catch (error, stackTrace) {
-      Error.throwWithStackTrace(StorageException(error), stackTrace);
+    } catch (error, stackTrace) {
+      throw StorageException(error, stackTrace);
     }
   }
-
-  @Deprecated('This mehtod should use by preferance storage')
-  @override
-  String? read({required String key}) => throw UnimplementedError();
 }
